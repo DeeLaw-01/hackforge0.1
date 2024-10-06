@@ -3,7 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config() // This line should load environment variables from the .env file.
-
+//Test comment
 const app = express()
 
 // Connect to MongoDB
@@ -12,12 +12,15 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true
 })
 
-// Allow Cross-Origin Requests from localhost
-// TODO: Append the client's URL to the origin array
+// Allow Cross-Origin Requests from frontend
 app.use(
   cors({
     credentials: true,
-    origin: ['http://localhost:5173', 'https://hackforge-01.vercel.app']
+    origin: [
+      'http://localhost:5173',
+      'https://hackforge-01.vercel.app',
+      'hackforge-01-7fo2v819z-deelaw-01s-projects.vercel.app'
+    ]
   })
 )
 
