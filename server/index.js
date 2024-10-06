@@ -19,7 +19,7 @@ app.use(
     origin: [
       'http://localhost:5173',
       'https://hackforge-01.vercel.app',
-      'hackforge-01-7fo2v819z-deelaw-01s-projects.vercel.app'
+      'https://hackforge-01-7fo2v819z-deelaw-01s-projects.vercel.app'
     ]
   })
 )
