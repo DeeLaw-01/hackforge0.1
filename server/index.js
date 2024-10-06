@@ -2,6 +2,7 @@ import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+dotenv.config() // This line should load environment variables from the .env file.
 
 const app = express()
 
@@ -16,7 +17,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use(
   cors({
     credentials: true,
-    origin: ['http://localhost:5173']
+    origin: []
   })
 )
 
