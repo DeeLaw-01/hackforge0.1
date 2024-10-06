@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-//YAHOO
+
 // Allow Cross-Origin Requests from localhost
 // TODO: Append the client's URL to the origin array
 app.use(
