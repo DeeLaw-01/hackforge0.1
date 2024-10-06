@@ -3,11 +3,12 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Home from './components/HomePage/Home.jsx'
 import AboutUs from './components/AboutUs/AboutUs.jsx'
 import Auth from './components/Auth/Auth.jsx'
-
+import useAuthStore from '../UserAuthStore'
 export default function App () {
+  const user = useAuthStore(state => state.user)
   return (
     <>
-      <Navbar />
+      {user && <Navbar />}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='*' element={<Navigate to='/' />} />

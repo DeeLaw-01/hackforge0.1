@@ -4,12 +4,20 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
 import { Menu, X } from 'lucide-react'
-import { Link, useNavigate } from 'react-router-dom'
-
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import useAuthStore from '../../UserAuthStore'
 import logo from '../assets/logo.png'
 
 export default function Component () {
+  const user = useAuthStore(state => state.user)
+  const location = useLocation()
+  const pathname = location.pathname // Get the current pathname
+  // All the routes you want to exclude
+  const withouNavbarRoutes = ['/auth']
+  if (withouNavbarRoutes.some(item => pathname.includes(item))) return null
+
   const navigate = useNavigate()
+
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const isMobile = useMediaQuery({ maxWidth: 768 })
@@ -75,17 +83,25 @@ export default function Component () {
         ) : (
           <div className='flex items-center space-x-6'>
             <NavLinks />
-            <button
-              className='text-white border border-white px-3 py-1 rounded-md hover:bg-white hover:text-black transition-colors'
-              onClick={() => {
-                navigate('/auth')
-              }}
-            >
-              Sign in
-            </button>
             <button className='bg-cta-primary text-white px-4 py-2 rounded-md hover:scale-[1.01] transition-all ease-in-out animate-text '>
               Schedule a Demo
             </button>
+            {user ? (
+              <>
+                <div className='bg-gray-600 text-white text-xl rounded-full flex items-center align-middle justify-center w-12 h-12 cursor-pointer'>
+                  <p>{user.firstName.charAt(0)}</p>
+                </div>
+              </>
+            ) : (
+              <button
+                className='text-white border border-white px-3 py-1 rounded-md hover:bg-white hover:text-black transition-colors'
+                onClick={() => {
+                  navigate('/auth')
+                }}
+              >
+                Sign in
+              </button>
+            )}
           </div>
         )}
       </motion.nav>
@@ -105,13 +121,27 @@ export default function Component () {
           </button>
           <div className='flex flex-col space-y-4'>
             <NavLinks />
-            <button className='text-white border border-white px-3 py-1 rounded-md hover:bg-white hover:text-black transition-colors'>
-              Sign in
-            </button>
-
             <button className='bg-cta-primary text-white px-4 py-2 rounded-md hover:scale-[1.01] transition-all ease-in-out animate-text '>
               Schedule a Demo
             </button>
+            {user ? (
+              <>
+                <div className='absolute bottom-4'>
+                  <div className='bg-gray-700   text-white text-xl rounded-full flex items-center align-middle justify-center w-12 h-12 cursor-pointer'>
+                    <p>{user.firstName.charAt(0)}</p>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <button
+                className='text-white border border-white px-3 py-1 rounded-md hover:bg-white hover:text-black transition-colors'
+                onClick={() => {
+                  navigate('/auth')
+                }}
+              >
+                Sign in
+              </button>
+            )}
           </div>
         </motion.div>
       )}
