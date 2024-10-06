@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use(
   cors({
     credentials: true,
-    origin: []
+    origin: ['http://localhost:5173', 'https://hackforge-01.vercel.app']
   })
 )
 

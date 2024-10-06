@@ -1,9 +1,11 @@
-import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef } from "react";
-import Placeholder1 from "../../assets/placeholder1.jpg";
-import Placeholder2 from "../../assets/placeholder2.jpg";
-import Placeholder3 from "../../assets/placeholder3.jpg";
-import "./Home.css";
+import { motion, useTransform, useScroll } from 'framer-motion'
+import { useRef } from 'react'
+import { CiLocationArrow1 } from 'react-icons/ci'
+
+import Placeholder1 from '../../assets/placeholder1.jpg'
+import Placeholder2 from '../../assets/placeholder2.jpg'
+import Placeholder3 from '../../assets/placeholder3.jpg'
+
 const Example = () => {
   return (
     <div className='bg-gray-900'>
@@ -57,8 +59,10 @@ const Card = ({ card }) => {
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
-        className="myback absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
+        className='absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110'
       ></div>
+      <div className='absolute bg-black w-full h-full opacity-60 group-hover:opacity-30 transition-opacity duration-75 ease-in-out' />
+
       <div className='absolute z-10 flex items-center align-middle justify-center flex-col'>
         <p className='p-8 text-6xl font-medium uppercase text-white backdrop-blur-lg'>
           {card.title}
@@ -67,6 +71,9 @@ const Card = ({ card }) => {
           <p>{card.service}</p>
         </div>
       </div>
+      <span className='absolute text-white bottom-4 right-6 group-hover:bottom-8 group-hover:right-4 transition-all '>
+        <CiLocationArrow1 size={32} />
+      </span>
     </div>
   )
 }
