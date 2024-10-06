@@ -1,0 +1,29 @@
+// authStore.js
+import { create } from 'zustand'
+
+const useAuthStore = create(set => ({
+  user: null,
+  isAuthenticated: false,
+
+  login: userData =>
+    set({
+      user: userData,
+      isAuthenticated: true
+    }),
+
+  logout: () =>
+    set({
+      user: null,
+      isAuthenticated: false
+    }),
+
+  updateUser: updatedUser =>
+    set(state => ({
+      user: {
+        ...state.user,
+        ...updatedUser
+      }
+    }))
+}))
+
+export default useAuthStore
