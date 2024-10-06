@@ -12,11 +12,10 @@ export default function Component () {
   const user = useAuthStore(state => state.user)
   const location = useLocation()
   const pathname = location.pathname // Get the current pathname
-  // All the routes you want to exclude
-  const withouNavbarRoutes = ['/auth']
-  if (withouNavbarRoutes.some(item => pathname.includes(item))) return null
 
   const navigate = useNavigate()
+  // All the routes you want to exclude
+  const withouNavbarRoutes = ['/auth']
 
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -54,6 +53,11 @@ export default function Component () {
     </>
   )
 
+  // Instead of returning null conditionally, return an empty fragment if the path matches
+  if (withouNavbarRoutes.some(item => pathname.includes(item))) {
+    return null // Return null if the route matches
+  }
+
   return (
     <>
       <motion.nav
@@ -69,10 +73,6 @@ export default function Component () {
         <div className='text-white text-xl font-bold'>
           <Link to='/home'>Placeholder</Link>
         </div>
-        {/* <img
-          src={logo}
-          className='rounded-full hover:scale-[1.01] cursor-pointer transition-transform size-[90px] md:size-[110px] -ml-5'
-        /> */}
         {isMobile ? (
           <button
             onClick={() => setIsSidebarOpen(true)}
@@ -87,11 +87,9 @@ export default function Component () {
               Schedule a Demo
             </button>
             {user ? (
-              <>
-                <div className='bg-gray-600 text-white text-xl rounded-full flex items-center align-middle justify-center w-12 h-12 cursor-pointer'>
-                  <p>{user.firstName.charAt(0)}</p>
-                </div>
-              </>
+              <div className='bg-gray-600 text-white text-xl rounded-full flex items-center align-middle justify-center w-12 h-12 cursor-pointer'>
+                <p>{user.firstName.charAt(0)}</p>
+              </div>
             ) : (
               <button
                 className='text-white border border-white px-3 py-1 rounded-md hover:bg-white hover:text-black transition-colors'
@@ -125,13 +123,11 @@ export default function Component () {
               Schedule a Demo
             </button>
             {user ? (
-              <>
-                <div className='absolute bottom-4'>
-                  <div className='bg-gray-700   text-white text-xl rounded-full flex items-center align-middle justify-center w-12 h-12 cursor-pointer'>
-                    <p>{user.firstName.charAt(0)}</p>
-                  </div>
+              <div className='absolute bottom-4'>
+                <div className='bg-gray-700 text-white text-xl rounded-full flex items-center align-middle justify-center w-12 h-12 cursor-pointer'>
+                  <p>{user.firstName.charAt(0)}</p>
                 </div>
-              </>
+              </div>
             ) : (
               <button
                 className='text-white border border-white px-3 py-1 rounded-md hover:bg-white hover:text-black transition-colors'
