@@ -13,6 +13,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Allow Cross-Origin Requests from localhost
 // TODO: Append the client's URL to the origin array
+// add a new origin to the array
 app.use(
   cors({
     credentials: true,
