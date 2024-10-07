@@ -87,7 +87,7 @@ export default function Component () {
               Schedule a Demo
             </button>
             {user ? (
-              <div className='bg-gray-600 text-white text-xl rounded-full flex items-center align-middle justify-center w-12 h-12 cursor-pointer'>
+              <div className='bg-cta-primary text-white text-xl rounded-full grid place-content-center w-12 h-12 cursor-pointer animate-text'>
                 <p>{user.firstName.charAt(0)}</p>
               </div>
             ) : (
