@@ -20,13 +20,8 @@ function Question() {
       <div className="Question">
         <div className="QuesImage"></div>
         <div className="Quesmain bg-gray-900">
-          <form action="/action_page.php">
-            <input
-              type="radio"
-              id="correct"
-              name="options"
-              value="JavaScript"
-            />
+          <form action="">
+            <input type="radio" id="correct" name="options" value="correct" />
               <input type="radio" id="incorrect1" name="options" value="HTML" />
                {" "}
             <input type="radio" id="incorrect2" name="options" value="CSS" />   

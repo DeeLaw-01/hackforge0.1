@@ -56,3 +56,6 @@
   /* font-size: 1.8rem; */
   word-wrap: normal;
 }
+[type="radio"] {
+  display: none;
+}

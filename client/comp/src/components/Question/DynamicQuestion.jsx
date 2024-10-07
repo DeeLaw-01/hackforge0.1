@@ -2,6 +2,8 @@ import React from "react";
 import { LuAlarmClock } from "react-icons/lu";
 import "./Question.css";
 function DynamicQuestion(props) {
+  console.log(props.children);
+
   return (
     <>
       <div className="DynamicQuestions">
