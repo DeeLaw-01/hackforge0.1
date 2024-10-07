@@ -9,7 +9,7 @@ export default function App () {
   const user = useAuthStore(state => state.user)
   return (
     <>
-      {user && <Navbar />}
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='*' element={<Navigate to='/' />} />
