@@ -35,8 +35,9 @@ export default function Component() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Pricing", href: "#" },
-    { name: "Careers", href: "#" },
+    { name: "Quiz", href: "/quiz/12" },
+    { name: "About", href: "#" },
+    { name: "LeaderBoard", href: "#" },
   ];
 
   const NavLinks = () => (
@@ -71,7 +72,7 @@ export default function Component() {
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 h-16 md:h-20"
       >
         <div className="text-white text-xl font-bold">
-          <Link to="/home">Placeholder</Link>
+          <Link to="/home">Hackforge</Link>
         </div>
         {isMobile ? (
           <button
